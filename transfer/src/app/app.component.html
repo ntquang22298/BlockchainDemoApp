@@ -1,0 +1,115 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+</div>
+
+
+<div class="container">
+  <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+  <ngb-alert *ngIf="errorMessage" type="danger" (close)="errorMessage = null">{{ errorMessage }}</ngb-alert>
+  <hr>
+  <ngb-tabset>
+    <ngb-tab title="Customer information">
+      <ng-template ngbTabContent>
+        <form>
+          <div class="tab">
+            <b> Address:</b>{{transferFrom}} <span class="tab-right">
+              <b>Balance:</b>{{balance}}</span>
+          </div>
+
+          <hr>
+          <label><b>Name</b></label>
+          <input type="text" class="inputfield" placeholder="Enter Customer's name" [(ngModel)]="name" name="name">
+          <label><b>Email</b></label>
+          <input type="email" class="inputfield" placeholder="Enter Customer's email" [(ngModel)]="email" name="email">
+          <label><b>PhoneNumber</b></label>
+          <input type="tel" class="inputfield" placeholder="Enter Customer's phone number" [(ngModel)]="phoneNumber"
+            name="phoneNumber" required>
+          <label><b>Point</b></label>
+          <input type="number" class="inputfield" [(ngModel)]="point" name="point">
+        </form>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Earn Point">
+      <ng-template ngbTabContent>
+        <form>
+
+          <div class="tab">
+            <b> Name:</b>{{name}} <span class="tab-right">
+              <b>Point:</b>{{point}}</span>
+          </div>
+          <hr>
+          <label><b>Price:</b>(1$ = 1 point)</label>
+          <hr>
+          <label><b>Amount</b></label>
+
+          <input type="number" class="inputfield" [(ngModel)]="pointEarned" name="pointEarned">
+          <hr>
+          <button type="submit" class="trfbtn" (click)="earnPoint()"> Earn Point</button>&nbsp;&nbsp;
+        </form>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Use point">
+      <ng-template ngbTabContent>
+        <form>
+          <div class="tab">
+            <b> Name:</b>{{name}} <span class="tab-right">
+              <b>Point:</b>{{point}}</span>
+          </div>
+          <hr>
+          <label><b>Amount</b></label>
+          <input type="number" class="inputfield" [(ngModel)]="pointUsed" name="pointUsed">
+          <hr>
+
+          <button type="submit" class="trfbtn" (click)="usePoint()"> Use Point</button>&nbsp;&nbsp;
+        </form>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Point transaction">
+      <ng-template ngbTabContent>
+        <form>
+          <div class="tab">
+            <b> Name:</b>{{name}} <span class="tab-right">
+              <b>Point:</b>{{point}}</span>
+          </div>
+          <hr>
+          <label><b>Transfer To</b></label>
+          <input type="text" class="inputfield" placeholder="Transfer To" [(ngModel)]="transferTo" name="transferTo">
+          <label><b>Amount</b></label>
+          <input type="number" class="inputfield" [(ngModel)]="pointSent" name="pointSent">
+          <hr>
+          <button type="submit" class="trfbtn" (click)="sendPoint()"> Send Point</button>&nbsp;&nbsp;
+        </form>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Customer Register">
+      <ng-template ngbTabContent>
+        <form>
+          <div class="tab">
+            <b> Address:</b>{{transferFrom}} <span class="tab-right">
+              <b>Balance:</b>{{balance}}</span>
+          </div>
+
+          <hr>
+          <label><b>Name</b></label>
+          <input type="text" class="inputfield" placeholder="Enter Customer's name" [(ngModel)]="nameRegister" name="name"
+            required>
+          <label><b>Email</b></label>
+          <input type="text" class="inputfield" placeholder="Enter Customer's email" [(ngModel)]="emailRegister" name="email"
+            required>
+          <label><b>PhoneNumber</b></label>
+          <input type="text" class="inputfield" placeholder="Enter Customer's phone number" [(ngModel)]="phoneNumberRegister"
+            name="phoneNumber" required>
+          <hr>
+          <button type="reset" class="trfbtn resetbtn">Reset</button>&nbsp;&nbsp;
+          <button type="submit" class="trfbtn" (click)="customerRegister()"> Register</button>&nbsp;&nbsp;
+        </form>
+      </ng-template>
+    </ngb-tab>
+
+  </ngb-tabset>
+</div>
